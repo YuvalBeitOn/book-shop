@@ -5,7 +5,7 @@ const PAGE_SIZE = 5;
 var gPageIdx = 0;
 var gSortBy = 'Name';
 
-var gBooks = _createBooks();
+const gBooks = _createBooks();
 
 function getBooks() {
     getBooksSorted();
@@ -33,14 +33,20 @@ function addBook(name, price) {
 }
 
 function updateBook(bookId, newPrice) {
-    const bookIdx = getBookById(bookId);
-    console.log(bookIdx);
-    bookIdx.price = newPrice;
+    const book = getBookById(bookId);
+    book.price = newPrice;
     _saveBooksToStorage(gBooks);
 }
 
+function getBookIdxById(bookId) {
+    const bookIdx = gBooks.findIndex(book => {
+        return bookId === book.id;
+    });
+    return bookIdx;
+}
+
 function removeBook(bookId) {
-    const bookIdx = getBookById(bookId);
+    const bookIdx = getBookIdxById(bookId);
     if (bookIdx < 0) return;
     gBooks.splice(bookIdx, 1)
     _saveBooksToStorage(gBooks);

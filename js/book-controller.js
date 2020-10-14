@@ -5,6 +5,7 @@ function onInit() {
     doTrans();
 }
 
+
 function renderBooks() {
     const books = getBooks();
     var strHtml = '';
@@ -111,7 +112,6 @@ function onSetRate(bookId, diff) {
 
 function onSetSort(sortBy) {
     setSort(sortBy);
-    console.log(gBooks);
     renderBooks();
     doTrans();
 }
