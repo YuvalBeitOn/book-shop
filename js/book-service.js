@@ -5,7 +5,7 @@ const PAGE_SIZE = 5;
 var gPageIdx = 0;
 var gSortBy = 'Name';
 
-const gBooks = _createBooks();
+var gBooks = _createBooks();
 
 function getBooks() {
     getBooksSorted();
@@ -90,7 +90,7 @@ function _createBook(title, price) {
 }
 
 function _createBooks() {
-    const books = loadFromStorage(STORAGE_KEY);
+    var books = loadFromStorage(STORAGE_KEY);
     if (!books) {
         books = [];
         books.push(_createBook('Harry Potter', 40));
